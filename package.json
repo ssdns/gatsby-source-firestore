@@ -1,0 +1,51 @@
+{
+  "name": "gatsby-source-firestore",
+  "version": "1.0.0",
+  "main": "gatsby-node.js",
+  "type": "commonjs",
+  "dependencies": {
+    "firebase-admin": "^9.5.0",
+    "gatsby": "^2.32.9"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
+    "typescript": "^4.1.2"
+  },
+  "files": [
+    "*.js",
+    "*.d.ts"
+  ],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsbyjs",
+    "firebase",
+    "firestore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssdns/gatsby-source-firestore"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/** --ext ts,tsx"
+  },
+  "engines": {
+    "node": "12"
+  }
+}
