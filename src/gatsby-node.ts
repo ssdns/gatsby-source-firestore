@@ -4,7 +4,7 @@ import { GatsbyNode, PluginOptions, SourceNodesArgs } from "gatsby"
 type Document = {
   type: string
   collection: string
-  map: <T extends {}>(documentId: string, data: {}, nodeId: string) => T
+  map: <T extends Record<string, unknown>>(documentId: string, data: Record<string, unknown>, nodeId: string) => T
   subCollections: Document[]
 }
 
