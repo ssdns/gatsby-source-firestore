@@ -5,7 +5,7 @@ type Document = {
   type: string
   collection: string
   map: <T extends Record<string, unknown>>(documentId: string, data: Record<string, unknown>, nodeId: string) => T
-  subCollections: Document[]
+  subCollections?: Document[]
 }
 
 interface Options extends PluginOptions {
