@@ -64,10 +64,12 @@ var sourceNodes = function (_a, _b) {
             });
             db = firebase_admin_1["default"].firestore();
             createNodeTree = function (type, path, parent) { return __awaiter(void 0, void 0, void 0, function () {
-                var snap, promises;
+                var ref, snap, promises;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4, db.collection(path).get()];
+                        case 0:
+                            ref = type.query ? type.query(db.collection(path)) : db.collection(path);
+                            return [4, ref.get()];
                         case 1:
                             snap = _a.sent();
                             promises = [];
