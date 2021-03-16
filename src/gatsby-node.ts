@@ -1,10 +1,11 @@
-import admin from "firebase-admin"
+import admin, { firestore } from "firebase-admin"
 import { GatsbyNode, PluginOptions, SourceNodesArgs } from "gatsby"
 
 type Document = {
   type: string
   collection: string
   map: <T extends Record<string, unknown>>(documentId: string, data: Record<string, unknown>, nodeId: string) => T
+  query?: <T>(ref: firestore.CollectionReference<T>) => firestore.Query<T>
   subCollections?: Document[]
 }
 
@@ -25,7 +26,8 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
   const db = admin.firestore()
 
   const createNodeTree = async (type: Document, path: string, parent: string | null) => {
-    const snap = await db.collection(path).get()
+    const ref = type.query ? type.query(db.collection(path)) : db.collection(path)
+    const snap = await ref.get()
     const promises: Promise<void>[] = []
     snap.forEach(doc => {
       promises.push(

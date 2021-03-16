@@ -27,6 +27,7 @@ module.exports = {
               ...data,
               documentId,
             }),
+            query: (ref) => ref.limit(10),
             subCollections: [
               {
                 type: "Book",
