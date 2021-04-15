@@ -69,3 +69,7 @@ module.exports = {
   }
 }
 ```
+
+## Acknowledgement
+- https://github.com/MartinReiche/gatsby-firestore
+- https://github.com/ryanflorence/gatsby-source-firebase
