@@ -3,7 +3,7 @@ Supports incremental build
 
 ## install
 ```
-yarn add https://github.com/ssdns/gatsby-source-firestore#1.0.2
+yarn add https://github.com/ssdns/gatsby-source-firestore#1.0.3
 ```
 
 provide ```GOOGLE_APPLICATION_CREDENTIALS``` environment variables
