@@ -58,50 +58,56 @@ var sourceNodes = function (_a, _b) {
     return __awaiter(void 0, void 0, void 0, function () {
         var db, createNodeTree;
         return __generator(this, function (_c) {
-            firebase_admin_1["default"].initializeApp({
-                credential: firebase_admin_1["default"].credential.applicationDefault(),
-                databaseURL: databaseURL
-            });
-            db = firebase_admin_1["default"].firestore();
-            createNodeTree = function (type, path, parent) { return __awaiter(void 0, void 0, void 0, function () {
-                var ref, snap, promises;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            ref = type.query ? type.query(db.collection(path)) : db.collection(path);
-                            return [4, ref.get()];
-                        case 1:
-                            snap = _a.sent();
-                            promises = [];
-                            snap.forEach(function (doc) {
-                                promises.push(new Promise(function (resolve) { return __awaiter(void 0, void 0, void 0, function () {
-                                    var nodeId, data;
-                                    return __generator(this, function (_a) {
-                                        switch (_a.label) {
-                                            case 0:
-                                                nodeId = createNodeId(path + "/" + doc.id);
-                                                data = type.map(doc.id, doc.data(), nodeId);
-                                                createNode(__assign(__assign({}, data), { id: nodeId, parent: parent, children: [], internal: {
-                                                        type: type.type,
-                                                        contentDigest: createContentDigest(data)
-                                                    } }));
-                                                if (!type.subCollections) return [3, 2];
-                                                return [4, Promise.all(type.subCollections.map(function (type) { return createNodeTree(type, path + "/" + doc.id + "/" + type.collection, nodeId); }))];
-                                            case 1:
-                                                _a.sent();
-                                                _a.label = 2;
-                                            case 2:
-                                                resolve();
-                                                return [2];
-                                        }
+            switch (_c.label) {
+                case 0:
+                    firebase_admin_1["default"].initializeApp({
+                        credential: firebase_admin_1["default"].credential.applicationDefault(),
+                        databaseURL: databaseURL
+                    });
+                    db = firebase_admin_1["default"].firestore();
+                    createNodeTree = function (type, path, parent) { return __awaiter(void 0, void 0, void 0, function () {
+                        var ref, snap, promises;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    ref = type.query ? type.query(db.collection(path)) : db.collection(path);
+                                    return [4, ref.get()];
+                                case 1:
+                                    snap = _a.sent();
+                                    promises = [];
+                                    snap.forEach(function (doc) {
+                                        promises.push(new Promise(function (resolve) { return __awaiter(void 0, void 0, void 0, function () {
+                                            var nodeId, data;
+                                            return __generator(this, function (_a) {
+                                                switch (_a.label) {
+                                                    case 0:
+                                                        nodeId = createNodeId(path + "/" + doc.id);
+                                                        data = type.map(doc.id, doc.data(), nodeId);
+                                                        createNode(__assign(__assign({}, data), { id: nodeId, parent: parent, children: [], internal: {
+                                                                type: type.type,
+                                                                contentDigest: createContentDigest(data)
+                                                            } }));
+                                                        if (!type.subCollections) return [3, 2];
+                                                        return [4, Promise.all(type.subCollections.map(function (type) { return createNodeTree(type, path + "/" + doc.id + "/" + type.collection, nodeId); }))];
+                                                    case 1:
+                                                        _a.sent();
+                                                        _a.label = 2;
+                                                    case 2:
+                                                        resolve();
+                                                        return [2];
+                                                }
+                                            });
+                                        }); }));
                                     });
-                                }); }));
-                            });
-                            return [2, Promise.all(promises)];
-                    }
-                });
-            }); };
-            return [2, Promise.all(types.map(function (type) { return createNodeTree(type, type.collection, null); }))];
+                                    return [2, Promise.all(promises)];
+                            }
+                        });
+                    }); };
+                    return [4, Promise.all(types.map(function (type) { return createNodeTree(type, type.collection, null); }))];
+                case 1:
+                    _c.sent();
+                    return [2];
+            }
         });
     });
 };

@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-firestore",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "gatsby-node.js",
   "type": "commonjs",
   "dependencies": {
@@ -44,9 +44,6 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint src/** --ext ts,tsx"
-  },
-  "engines": {
-    "node": "12"
   },
   "license": "MIT"
 }

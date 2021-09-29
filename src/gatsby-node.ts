@@ -57,7 +57,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
     return Promise.all(promises)
   }
 
-  return Promise.all(types.map(type => createNodeTree(type, type.collection, null)))
+  await Promise.all(types.map(type => createNodeTree(type, type.collection, null)))
 }
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
