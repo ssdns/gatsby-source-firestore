@@ -45,8 +45,5 @@
     "build": "tsc",
     "lint": "eslint src/** --ext ts,tsx"
   },
-  "engines": {
-    "node": "12"
-  },
   "license": "MIT"
 }
