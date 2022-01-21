@@ -68,7 +68,9 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
   if (node.internal.owner === "gatsby-source-firestore") {
     if (node.parent) {
       const parent = getNode(node.parent)
-      createParentChildLink({ parent, child: node })
+      if (parent) {
+        createParentChildLink({ parent, child: node })
+      }
     }
   }
 }
