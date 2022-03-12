@@ -4,8 +4,8 @@
   "main": "gatsby-node.js",
   "type": "commonjs",
   "dependencies": {
-    "firebase-admin": "^9.5.0",
-    "gatsby": "^4.5.0"
+    "firebase-admin": "^10.0.0",
+    "gatsby": "^4.9.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.10",
