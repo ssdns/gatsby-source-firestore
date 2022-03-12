@@ -1,30 +1,29 @@
 {
   "name": "gatsby-source-firestore",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "gatsby-node.js",
   "type": "commonjs",
   "dependencies": {
-    "firebase-admin": "^9.5.0",
-    "gatsby": "^3.0.0"
+    "firebase-admin": "^10.0.0",
+    "gatsby": "^4.9.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^17.0.10",
     "@types/react-dom": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "eslint": "^7.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.2.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
     "prettier": "^2.2.1",
-    "prettier-eslint": "^12.0.0",
-    "typescript": "^4.1.2"
+    "prettier-eslint": "^13.0.0",
+    "typescript": "^4.2.3"
   },
   "files": [
     "*.js",
@@ -42,7 +41,7 @@
     "url": "git+https://github.com/ssdns/gatsby-source-firestore"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --skipLibCheck",
     "lint": "eslint src/** --ext ts,tsx"
   },
   "license": "MIT"
