@@ -6,10 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.onCreateNode = exports.sourceNodes = void 0;
 const firebase_admin_1 = __importDefault(require("firebase-admin"));
 const sourceNodes = async ({ actions: { createNode }, createContentDigest, createNodeId }, { types, databaseURL }) => {
-    firebase_admin_1.default.initializeApp({
-        credential: firebase_admin_1.default.credential.applicationDefault(),
-        databaseURL,
-    });
+    if (!firebase_admin_1.default.apps.length) {
+        firebase_admin_1.default.initializeApp({
+            credential: firebase_admin_1.default.credential.applicationDefault(),
+            databaseURL,
+        });
+    }
     const db = firebase_admin_1.default.firestore();
     const createNodeTree = async (type, path, parent) => {
         const ref = type.query ? type.query(db.collection(path)) : db.collection(path);
