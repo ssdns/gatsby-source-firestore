@@ -18,11 +18,13 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
   { actions: { createNode }, createContentDigest, createNodeId }: SourceNodesArgs,
   { types, databaseURL }: Options
 ) => {
-  // https://firebase.google.com/docs/admin/setup?hl=ja#initialize_the_sdk
-  admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL,
-  })
+  if (!admin.apps.length) {
+    // https://firebase.google.com/docs/admin/setup?hl=ja#initialize_the_sdk
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault(),
+      databaseURL,
+    })
+  }
   const db = admin.firestore()
 
   const createNodeTree = async (type: Document, path: string, parent: string | null) => {
